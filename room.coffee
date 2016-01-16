@@ -320,6 +320,8 @@ class Room
     #积分
     return if @deleted
     #log.info 'room-delete', this.name, Room.all.length
+    tmp_buffer = Buffer.concat(@watcher_buffers).toString('hex')
+    log.info tmp_buffer
     @watcher_buffers = []
     @players = []
     @watcher.end() if @watcher

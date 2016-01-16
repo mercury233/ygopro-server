@@ -411,10 +411,12 @@
     }
 
     Room.prototype["delete"] = function() {
-      var index;
+      var index, tmp_buffer;
       if (this.deleted) {
         return;
       }
+      tmp_buffer = Buffer.concat(this.watcher_buffers).toString('hex');
+      log.info(tmp_buffer);
       this.watcher_buffers = [];
       this.players = [];
       if (this.watcher) {
